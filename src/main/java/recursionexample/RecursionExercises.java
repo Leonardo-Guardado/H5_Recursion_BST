@@ -17,27 +17,27 @@ public class RecursionExercises {
             throw new IllegalArgumentException("Cannot be less than one");
         }
         //If n is equal to either 1 or 0
-        else if(n <= 1){
-            n = 1;
+        if(n == 0 | n == 1){
+            return 1;
         }
         //If n is greater than one
-        return n * factorialRecursive(n -1);
+        else{
+            return n * factorialRecursive(n-1);
+        }
     }
 
     // Task 2: iterative factorial
     public static long factorialIterative(int n) {
         // TODO: implement Task 2
-        long result = 0;
-
+        long result = 1;
         if (n < 0){
             throw new IllegalArgumentException("Cannot be less than zero");
         }
-        for (int i = 0; n > 0; i++){
-            if (n == 1){
-                result *= 1;
-                break;
-            }
-            result *= n * (n-1);
+        if (n == 0 | n ==1){
+            return 1;
+        }
+        for (int i = 2; i <= n; i++){
+            result *= i;
         }
         return result;
     }
@@ -49,7 +49,7 @@ public class RecursionExercises {
             throw new IllegalArgumentException();
         }
         else if(n <= 1){
-            n = 1;
+            return n;
         }
         return fibonacciRecursive(n-1) + fibonacciRecursive(n-2);
     }
