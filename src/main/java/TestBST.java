@@ -50,5 +50,7 @@ public class TestBST {
         System.out.println("Maximum value of tree: " + maximum);
 
         System.out.println("Sorted List: " + intTree.toSortedList());
+
+        System.out.println("Is the tree balanced?\nintTree: " + intTree.isBalanced() + "\ntree: " + tree.isBalanced());
     }
 }

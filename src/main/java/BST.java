@@ -222,11 +222,34 @@ public class BST<E> implements Tree<E> {
     //-----------------------------------------------------------------------------------
     //Problem 10
     public boolean isBalanced(){
-
-        return true;
+        if (heightOrUnbalanced(root) == -2){
+            return false;
+        }
+        else{
+            return true;
+        }
     }
 
     private int heightOrUnbalanced(TreeNode<E> node){
+        if (node == null){
+            return 0;
+        }
+        int leftHeight = height(node.left);
+        if (leftHeight == -1){
+            return -2;
+        }
+        int rightHeight = height(node.right);
+        if (rightHeight == -1){
+            return -2;
+        }
+        int diff = Math.abs(leftHeight - rightHeight);
+
+        if(diff > 1){
+            return -2;
+        }
+        else{
+            return 1;
+        }
 
     }
 
