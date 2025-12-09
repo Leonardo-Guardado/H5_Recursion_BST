@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 public class BST<E> implements Tree<E> {
     protected TreeNode<E> root;
     protected int size = 0;
@@ -134,6 +136,101 @@ public class BST<E> implements Tree<E> {
     public TreeNode<E> getRoot() {
         return root;
     }
+
+//----------------------------------------------------------------------------------------------------------------
+    //BST Exercises 6-10
+    //-----------------------------------------------------------------------------------
+    //Problem 6
+    public int height(){ return height(root);}
+
+    private int height(TreeNode<E> node){
+        //If the tree is entirely empty
+        if (root == null){
+            return -1;
+        }
+        //If we reached a leaf
+        if (node == null){
+            return 0;
+        }
+        //Going down the tree layer by layer
+        int leftHeight = height(node.left);
+        int rightHeight = height(node.right);
+        //If the node is the root, we do not add 1
+        if(node == root){
+            //max allows us to count the layers where they are not complete
+            return Math.max(leftHeight, rightHeight);
+        }
+        //If the node is not the root, then we begin to add 1 after each layer
+        return Math.max(leftHeight, rightHeight) + 1;
+    }
+
+    //-------------------------------------------------------------------------------------------
+    //Problem 7
+    public int countLeaves(){ return countLeaves(root);}
+
+    private int countLeaves(TreeNode<E> node){
+        if (root == null){
+            return -1;
+        }
+        if (node == null){
+            return 0;
+        }
+        if (node.left == null && node.right == null){
+            return 1;
+        }
+        return countLeaves(node.left) + countLeaves(node.right);
+    }
+
+    //---------------------------------------------------------------------------------------------
+    //Problem 8
+    public E min(){
+        if (root == null){
+            return null;
+        }
+        TreeNode<E> node = root;
+        while (node.left != null){
+            node = node.left;
+        }
+        return node.element;
+    }
+    public E max(){
+        if (root == null){
+            return null;
+        }
+        TreeNode<E> node = root;
+        while (node.right != null){
+            node = node.right;
+        }
+        return node.element;
+    }
+
+    //-----------------------------------------------------------------------------------
+    //Problem 9
+    public java.util.List<E> toSortedList(){
+        java.util.ArrayList<E> list = new java.util.ArrayList<>();
+        toSortedList(root, list);
+        return list;
+    }
+
+    private void toSortedList(TreeNode<E> node, java.util.List<E> result){
+        if (node == null) return;
+        toSortedList(node.left, result);
+        result.add(node.element);
+        toSortedList(node.right, result);
+    }
+
+    //-----------------------------------------------------------------------------------
+    //Problem 10
+    public boolean isBalanced(){
+
+        return true;
+    }
+
+    private int heightOrUnbalanced(TreeNode<E> node){
+
+    }
+
+//----------------------------------------------------------------------------------------------------------------
 
     /** Returns a path from the root leading to the specified element */
     public java.util.ArrayList<TreeNode<E>> path(E e) {

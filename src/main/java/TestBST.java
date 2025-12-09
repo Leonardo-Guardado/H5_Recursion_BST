@@ -34,5 +34,21 @@ public class TestBST {
         BST<Integer> intTree = new BST<>(numbers);
         System.out.print("\nInorder (sorted): ");
         intTree.inorder();
+
+        //--------------------------------------------------------------------------------------
+        //Testing new methods
+        int height = tree.height();
+        System.out.println();
+        System.out.println("Tree height is " + height);
+
+        int leaves = tree.countLeaves();
+        System.out.println("All leaves in tree: " + leaves);
+
+        int minimum = intTree.min();
+        System.out.println("Minimum value of tree: " + minimum);
+        int maximum = intTree.max();
+        System.out.println("Maximum value of tree: " + maximum);
+
+        System.out.println("Sorted List: " + intTree.toSortedList());
     }
 }
