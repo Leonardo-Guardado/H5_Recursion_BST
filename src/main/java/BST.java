@@ -169,15 +169,19 @@ public class BST<E> implements Tree<E> {
     public int countLeaves(){ return countLeaves(root);}
 
     private int countLeaves(TreeNode<E> node){
+        //If root does not exist
         if (root == null){
             return -1;
         }
+        //If the tree ends after a node
         if (node == null){
             return 0;
         }
+        //Finding the leaves
         if (node.left == null && node.right == null){
             return 1;
         }
+        //Progressing Recursively through the left and right subtrees
         return countLeaves(node.left) + countLeaves(node.right);
     }
 
@@ -187,70 +191,87 @@ public class BST<E> implements Tree<E> {
         if (root == null){
             return null;
         }
+        //Initialize a node starting at root
         TreeNode<E> node = root;
+        //Going fully through the left subtrees until at the final left leaf
         while (node.left != null){
             node = node.left;
         }
+        //Return element of far left leaf
         return node.element;
     }
     public E max(){
         if (root == null){
             return null;
         }
+        //Initialize a node starting at root
         TreeNode<E> node = root;
+        //Going fully through the right subtrees until at the final right leaf
         while (node.right != null){
             node = node.right;
         }
+        //Return element of far right leaf
         return node.element;
     }
 
     //-----------------------------------------------------------------------------------
     //Problem 9
     public java.util.List<E> toSortedList(){
+        //Initialize a new ArrayList
         java.util.ArrayList<E> list = new java.util.ArrayList<>();
+        //Calling new method
         toSortedList(root, list);
         return list;
     }
 
     private void toSortedList(TreeNode<E> node, java.util.List<E> result){
+        //Base case, ends recursive method
         if (node == null) return;
+        //Traverse the left subtree
         toSortedList(node.left, result);
+        //Add the element of node into the new ArrayList
         result.add(node.element);
+        //Traverse the right subtree after checking the left
         toSortedList(node.right, result);
     }
 
     //-----------------------------------------------------------------------------------
     //Problem 10
     public boolean isBalanced(){
-        if (heightOrUnbalanced(root) == -2){
-            return false;
+        //Calls method, if method returns -2 then it is not balanced
+        if (heightOrUnbalanced(root) != -2){
+            return true;
         }
         else{
-            return true;
+            return false;
         }
     }
 
     private int heightOrUnbalanced(TreeNode<E> node){
+        //If there is no node that exists, no need to check for balancing
         if (node == null){
             return 0;
         }
+        //going through the left subtrees first
         int leftHeight = height(node.left);
+        //Checking if left subtrees are already unbalanced
         if (leftHeight == -1){
             return -2;
         }
+        //Same process but for the right subtrees
         int rightHeight = height(node.right);
         if (rightHeight == -1){
             return -2;
         }
+        //Getting the absolute value of the difference of both right and left subtrees
         int diff = Math.abs(leftHeight - rightHeight);
-
+        //Checking the difference for if tree is balanced
         if(diff > 1){
             return -2;
         }
         else{
             return 1;
         }
-
     }
 
 //----------------------------------------------------------------------------------------------------------------
