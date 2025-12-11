@@ -49,12 +49,12 @@ public class TestBST {
 
         //Minimum and Maximum values
         int minimum = intTree.min();
-        System.out.println("Minimum value of tree: " + minimum);
+        System.out.println("Minimum value of inTree: " + minimum);
         int maximum = intTree.max();
-        System.out.println("Maximum value of tree: " + maximum);
+        System.out.println("Maximum value of inTree: " + maximum);
 
         //Sorted ArrayList
-        System.out.println("Sorted List: " + intTree.toSortedList());
+        System.out.println("Sorted List of inTree: " + intTree.toSortedList());
 
         //Is Tree Balanced?
         System.out.println("Is the tree balanced?\nintTree: " + intTree.isBalanced() + "\ntree: " + tree.isBalanced());
