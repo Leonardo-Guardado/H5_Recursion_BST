@@ -37,20 +37,26 @@ public class TestBST {
 
         //--------------------------------------------------------------------------------------
         //Testing new methods
+
+        //Tree height
         int height = tree.height();
         System.out.println();
         System.out.println("Tree height is " + height);
 
+        //Tree Leaves
         int leaves = tree.countLeaves();
         System.out.println("All leaves in tree: " + leaves);
 
+        //Minimum and Maximum values
         int minimum = intTree.min();
         System.out.println("Minimum value of tree: " + minimum);
         int maximum = intTree.max();
         System.out.println("Maximum value of tree: " + maximum);
 
+        //Sorted ArrayList
         System.out.println("Sorted List: " + intTree.toSortedList());
 
+        //Is Tree Balanced?
         System.out.println("Is the tree balanced?\nintTree: " + intTree.isBalanced() + "\ntree: " + tree.isBalanced());
     }
 }
